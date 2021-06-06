@@ -1,0 +1,9 @@
+.loadMoreBtn{
+    background: #1678d4;
+    width: 100%;
+    min-height: 50px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+}
