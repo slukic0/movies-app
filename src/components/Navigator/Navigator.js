@@ -19,6 +19,9 @@ class Navigator extends Component{
                         <li class="navbar-item">
                             <Link to="/list" class="nav-link">Favourites</Link>
                         </li>
+                        <li class="navbar-item" style={{cursor: 'pointer'}}>
+                            <a href='https://github.com/Laemonz/movies-app' class="nav-link" target='_blank' rel="noopener noreferrer">View Source</a>
+                        </li>
                     </ul>
                 </div>
             </nav>

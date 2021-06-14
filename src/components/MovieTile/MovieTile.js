@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import noPoster from '../../images/noPoster.png'
+import './MovieTile.css'
 
 const POSTER_SIZE = 'w500/'
 
@@ -17,7 +18,7 @@ class MovieTile extends Component{
         }
 
         return(
-            <div class="card w-25 text-center">
+            <div class="card text-center">
                 <img class="card-img-top" src={poster_url} alt='Movie Poster' onError={this.errorHandler}/>
                 <div class="card-body">
                     <h5 class="card-title">{title}</h5>
