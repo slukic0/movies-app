@@ -5,9 +5,6 @@ import MovieTile from '../MovieTile/MovieTile';
 import Grid from '../Grid/Grid'
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn'
 
-const API_URL = 'https://api.themoviedb.org/3';
-const API_KEY = process.env.REACT_APP_API_KEY;
-
 class Browse extends Component{
 
     constructor(props){
@@ -20,12 +17,11 @@ class Browse extends Component{
     }
 
     getPopular = () =>{
-        // https://developers.themoviedb.org/3/
-        const URL = `${API_URL}/movie/popular?&api_key=${API_KEY}&page=${this.state.pageNum}`
+        const URL = `http://localhost:4000/movies/getpopular/${this.state.pageNum}`
         
         axios.get(URL)
         .then((response) => {
-            response.data.results.forEach(element => {
+            response.data.forEach(element => {
                 const tile = <MovieTile key={element.id} movie={element} />
                 this.state.movies.push(tile)
             });
@@ -44,14 +40,16 @@ class Browse extends Component{
     render() {
         if (this.state.loading){
             return(
-                <div class="spinner-border" role="status">
-                    <span class="sr-only"></span>
+                <div class='container text-center'>
+                    <div class="spinner-border text-center" role="status">
+                        <span class="sr-only"></span>
+                    </div>
                 </div>
             )
         }
         else{
             return(
-                <div>
+                <div class='container-xl'>
                     <Grid movies={this.state.movies}/>
                     <LoadMoreBtn text='Load More' onClick={this.getPopular}/>
                 </div>

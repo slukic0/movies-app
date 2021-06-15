@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 class Navigator extends Component{
     render() {
         return(
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
                 <Link to="/" class="navbar-brand">Movies-App</Link>
                 <div class="collpase navbar-collapse">
                     <ul class="navbar-nav mr-auto">

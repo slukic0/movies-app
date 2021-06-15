@@ -13,9 +13,9 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <div class="container">
+          <div class="container-fluid">
             <Navigator/>
-            <br/>
+            <br/> <br/> <br/>
             <Route path="/" exact component={Browse} />
             <Route path="/search" component={Search} />
             <Route path="/list" component={List} />

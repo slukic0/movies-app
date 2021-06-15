@@ -6,16 +6,13 @@ import MovieTile from '../MovieTile/MovieTile';
 import Grid from '../Grid/Grid'
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn'
 
-
-const API_URL = 'https://api.themoviedb.org/3';
-const API_KEY = process.env.REACT_APP_API_KEY;
-
 class Search extends Component{
 
     constructor(props){
         super(props)
         this.state={
             movies: [],
+            searchTerm: "",
             currentPage: 1,
             loading: false,
             noResults: false
@@ -27,12 +24,13 @@ class Search extends Component{
 
         this.setState({noResults: false})
         this.setState({loading: true})
-        const URL = `${API_URL}/search/movie?&api_key=${API_KEY}&query=${searchTerm}&page=${pageNum}`
+        //const URL = `${API_URL}/search/movie?&api_key=${API_KEY}&query=${searchTerm}&page=${pageNum}`
+        const URL = `http://localhost:4000/movies/search/${searchTerm}/${pageNum}`
         
         axios.get(URL)
         .then((response) => {
             let myMovies = []
-            response.data.results.forEach(element => {
+            response.data.forEach(element => {
                 const tile = <MovieTile key={element.id} movie={element} />
                 myMovies.push(tile)
             });
@@ -54,16 +52,15 @@ class Search extends Component{
         this.setState({noResults: false})
         this.setState({loading: true})
 
-        console.log('Seaching for movies...')
-        const URL = `${API_URL}/search/movie?&api_key=${API_KEY}&query=${searchTerm}&page=${pageNum}`
+        //const URL = `${API_URL}/search/movie?&api_key=${API_KEY}&query=${searchTerm}&page=${pageNum}`
+        const URL = `http://localhost:4000/movies/search/${searchTerm}/${pageNum}`
         
         axios.get(URL)
         .then((response) => {
-            response.data.results.forEach(element => {
+            response.data.forEach(element => {
                 const tile = <MovieTile key={element.id} movie={element} />
                 this.state.movies.push(tile)
             });
-            console.log('Search completed, page '+pageNum)
             this.setState({loading: false})
 
             if (this.state.movies.length === 0 || searchTerm !== ""){
@@ -77,10 +74,7 @@ class Search extends Component{
 
     changeHandler = (event) => {
         this.setState({currentPage: 1, searchTerm: event.target.value}, ()=>{
-            if(this.state.searchTerm === ""){
-                this.setState({noResults: false})
-            }
-            else{
+            if(this.state.searchTerm !== ""){
                 this.preformSearch(this.state.searchTerm, 1)
             }   
         })
@@ -93,6 +87,7 @@ class Search extends Component{
     }
 
     render() {
+        console.log(this.state.searchTerm)
         if (this.state.noResults){
             return(
                 <div class='container'>
@@ -106,9 +101,9 @@ class Search extends Component{
             )
         }
         else{
-            if (this.state.loading){
+            if (this.state.loading || this.state.searchTerm===""){
                 return(
-                    <div class='container'>
+                    <div class='container-xl'>
                         <input type="text" class="search" placeholder="Search for a movie" onChange={this.changeHandler}/>
                         <br/>
                         <Grid movies={this.state.movies}/>
@@ -117,7 +112,7 @@ class Search extends Component{
             }
             else{
                 return(
-                    <div class='container'>
+                    <div class='container-xl'>
                         <input type="text" class="search" placeholder="Search for a movie" onChange={this.changeHandler}/>
                         <br/>
                         <Grid movies={this.state.movies}/>
