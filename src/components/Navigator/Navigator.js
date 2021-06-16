@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Route, Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-
+import UserLogin from '../UserLogin//UserLogin'
 
 class Navigator extends Component{
     render() {
@@ -21,6 +20,16 @@ class Navigator extends Component{
                         </li>
                         <li class="navbar-item" style={{cursor: 'pointer'}}>
                             <a href='https://github.com/Laemonz/movies-app' class="nav-link" target='_blank' rel="noopener noreferrer">View Source</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="collpase navbar-collapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="navbar-item">
+                            <Link to="/profile" class="nav-link">Profile</Link>
+                        </li>
+                        <li>
+                            <UserLogin/>
                         </li>
                     </ul>
                 </div>

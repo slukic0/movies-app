@@ -7,10 +7,17 @@ import Browse from './components/Browse/Browse'
 import Search from './components/Search/Search'
 import List from './components/List/List'
 
+import { Auth0Provider } from "@auth0/auth0-react";
+import Profile from "./components/Profile/Profile";
 
 class App extends Component {
   render() {
     return (
+    <Auth0Provider
+      domain={process.env.REACT_APP_AUTH0_DOMAIN}
+      clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
+      redirectUri={window.location.origin}
+    >
       <Router>
         <Switch>
           <div class="container-fluid">
@@ -19,9 +26,12 @@ class App extends Component {
             <Route path="/" exact component={Browse} />
             <Route path="/search" component={Search} />
             <Route path="/list" component={List} />
+            <Route path="/profile" component={Profile} />
+
           </div>
         </Switch>
       </Router>
+    </Auth0Provider>
     );
   }
 }
