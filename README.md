@@ -18,4 +18,4 @@ cd server
 npm install
 ```
 
-To run the app, run `npm start`{.bash} from both `./`{.bash} and `./server`{.bash}
+To run the app, run `npm start` from both `./` and `./server`
