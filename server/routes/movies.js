@@ -12,6 +12,9 @@ router.route('/').get(function(req,res){
     res.send("Welcome to /movies/")
 })
 
+/**
+ * Get popular movies
+ */
 router.route('/getpopular/:pageNum').get(function(req,res){
     const URL = `${API_URL}/movie/popular?&api_key=${API_KEY}&page=${req.params.pageNum}`
     
@@ -24,6 +27,9 @@ router.route('/getpopular/:pageNum').get(function(req,res){
     });
 })
 
+/**
+ * Search movies
+ */
 router.route('/search/:query/:pageNum').get(function(req,res){
     const URL = `${API_URL}/search/movie?&api_key=${API_KEY}&query=${req.params.query}&page=${req.params.pageNum}`
     
@@ -36,6 +42,9 @@ router.route('/search/:query/:pageNum').get(function(req,res){
     });
 })
 
+/**
+ * Get a movie given its ID
+ */
 router.route('/getmovie/:id').get(function(req,res){
     const URL = `${API_URL}/movie/${req.params.id}?api_key=${API_KEY}`
     console.log(URL)

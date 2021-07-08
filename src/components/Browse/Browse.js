@@ -17,7 +17,7 @@ class Browse extends Component{
     }
 
     getPopular = () =>{
-        const URL = `http://localhost:4000/movies/getpopular/${this.state.pageNum}`
+        const URL = `${process.env.REACT_APP_SERVER_URL}/movies/getpopular/${this.state.pageNum}`
         
         axios.get(URL)
         .then((response) => {
