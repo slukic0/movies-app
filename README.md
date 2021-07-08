@@ -32,4 +32,4 @@ You must also set the environment variables for both the frontend and backend
 
 ## Running the App ##
 1. Start the React App by navigating to `./` and running `npm start`
-2. Start the React App by navigating to `./server` and running `node server.js`
+2. Start the Server by navigating to `./server` and running `node server` or `nodemon server`
