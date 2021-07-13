@@ -35,7 +35,7 @@ class Search extends Component{
                 loading: false
             })
 
-            if (this.state.movies.length === 0 && searchTerm !== ""){
+            if (response.data.length === 0 && searchTerm !== ""){
                 this.setState({noResults: true})
             }
         })
@@ -60,7 +60,7 @@ class Search extends Component{
             });
             this.setState({loading: false})
 
-            if (this.state.movies.length === 0 || searchTerm !== ""){
+            if (response.data.length === 0 && searchTerm !== ""){
                 this.setState({noResults: true})
             }
         })
@@ -84,7 +84,6 @@ class Search extends Component{
     }
 
     render() {
-        console.log(this.state.searchTerm)
         if (this.state.noResults){
             return(
                 <div class='container'>

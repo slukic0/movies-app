@@ -47,7 +47,6 @@ router.route('/search/:query/:pageNum').get(function(req,res){
  */
 router.route('/getmovie/:id').get(function(req,res){
     const URL = `${API_URL}/movie/${req.params.id}?api_key=${API_KEY}`
-    console.log(URL)
 
     axios.get(URL)
     .then((response) => {
