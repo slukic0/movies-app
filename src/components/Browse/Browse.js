@@ -21,12 +21,11 @@ class Browse extends Component{
         
         axios.get(URL)
         .then((response) => {
-            response.data.forEach(element => {
-                const tile = <MovieTile key={element.id} movie={element} />
-                this.state.movies.push(tile)
-            });
-            this.setState({loading: false})
-            this.setState({pageNum: this.state.pageNum+1})
+            this.setState({
+                movies: response.data,
+                pageNum: this.state.pageNum+1,
+                loading: false
+            })
         })
         .catch(err =>{
             console.log(err)

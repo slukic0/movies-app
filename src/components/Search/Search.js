@@ -29,13 +29,11 @@ class Search extends Component{
         
         axios.get(URL)
         .then((response) => {
-            let myMovies = []
-            response.data.forEach(element => {
-                const tile = <MovieTile key={element.id} movie={element} />
-                myMovies.push(tile)
-            });
-            this.setState({movies: myMovies})
-            this.setState({loading: false})
+            this.setState({
+                movies: response.data,
+                pageNum: this.state.pageNum+1,
+                loading: false
+            })
 
             if (this.state.movies.length === 0 && searchTerm !== ""){
                 this.setState({noResults: true})
@@ -103,7 +101,7 @@ class Search extends Component{
         else{
             if (this.state.loading || this.state.searchTerm===""){
                 return(
-                    <div class='container-xl'>
+                    <div class='container-lg'>
                         <input type="text" class="search" placeholder="Search for a movie" onChange={this.changeHandler}/>
                         <br/>
                         <Grid movies={this.state.movies}/>
