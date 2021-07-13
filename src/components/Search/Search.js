@@ -56,8 +56,7 @@ class Search extends Component{
         axios.get(URL)
         .then((response) => {
             response.data.forEach(element => {
-                const tile = <MovieTile key={element.id} movie={element} />
-                this.state.movies.push(tile)
+                this.state.movies.push(element)
             });
             this.setState({loading: false})
 
