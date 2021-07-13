@@ -54,7 +54,6 @@ class Browse extends Component{
     }
 
     render() {
-        console.log('render');
         const {isAuthenticated} = this.props.auth0
 
         if (!isAuthenticated){
@@ -82,7 +81,6 @@ class Browse extends Component{
                   )
             }
             else{
-                console.log(this.state.favMovies);
                 return(
                     <div class='container-xl'>
                         <Grid movies={this.state.favMovies} />

@@ -106,11 +106,11 @@ router.route('/addMovie/:userID').post(function(req,res){
  */
  router.route('/removeMovie/:userID').post(function(req,res){
     const userID = req.params.userID;
-    const newMovie = req.body.movieID
+    const remMovie = req.body.movieID
 
     User.findOneAndUpdate(
         {identifier: userID},
-        { $pull: { fav_movies: newMovie } },
+        { $pull: { fav_movies: remMovie } },
         function (error, success) {
             if (error) {
                 res.status(400).send('Error: cannot remove movie!');
