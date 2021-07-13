@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios'
 
 import './Search.css'
-import MovieTile from '../MovieTile/MovieTile';
 import Grid from '../Grid/Grid'
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn'
 

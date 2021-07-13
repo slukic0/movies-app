@@ -17,7 +17,6 @@ class Browse extends Component{
     getFavMovies = () => {
         const { user } = this.props.auth0
         const userID = user.sub
-        let movies = []
 
         axios.get(`${process.env.REACT_APP_SERVER_URL}/users/get/${userID}`)
             .then( (res) =>{
