@@ -44,7 +44,8 @@ class MovieTile extends Component{
             // now lets add the movie to the user's favs
             .then(res =>{
                 axios.post(`${process.env.REACT_APP_SERVER_URL}/users/addMovie/${userID}`, {"movieID": movieID})
-                    .then( (res) => console.log(res));
+                    .then( (res) => console.log(res))
+                    .then(this.setState({isFav: true}))
             });
     }
 
@@ -54,7 +55,8 @@ class MovieTile extends Component{
         const movieID = this.props.movie.id
 
         axios.post(`${process.env.REACT_APP_SERVER_URL}/users/removeMovie/${userID}`, {"movieID": movieID})
-            .then( (res) => console.log(res));
+            .then( (res) => console.log(res))
+            .then(this.setState({isFav: false}))
     }
 
     componentDidMount = () => {
@@ -99,6 +101,7 @@ class MovieTile extends Component{
     }
 
     render() {
+        console.log('render');
         const { isAuthenticated } = this.props.auth0
         const movie_url = 'https:/www.themoviedb.org/movie/' + this.props.movie.id
         const title = this.props.movie.title 
