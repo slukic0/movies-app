@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const user = new Schema({
-    _id: {
-        type: mongoose.ObjectId,
+    identifier: {
+        type: String,
         required: true
     },
     fav_movies: {

@@ -3,33 +3,37 @@ import axios from 'axios'
 import noPoster from '../../images/noPoster.png'
 import './MovieTile.css'
 import FavButton from './FavButton'
+import {withAuth0 } from "@auth0/auth0-react";
 
 const POSTER_SIZE = 'w500/'
 
 class MovieTile extends Component{
 
-    favHandler = (event) => {
-        /*
-        1. Check if the user exists in the DB
-            i. If not, create the user in the DB
-        2. Add the movie to the user's favourites
-        
-        Backlog: The Fav button should be allow the user to unFav a movie if they have already faved it
-        */
+    favHandler = (event) => { 
+        console.log("fav handler is running")
+        const { user } = this.props.auth0
+        const userID = user.sub
+        const movieID = this.props.movie.id
         const newUser = {
-            //_id: we need the user's auth0 id here,
+            identifier: userID,
             fav_movies: []
         };
 
-        axios.post(`http://localhost:4000/users/create/${this.props}`, newUser)
-            .then(res => console.log(res.data));
-
-        axios.post(`http://localhost:4000/users/addMovie/${this.props}`, newUser)
-            .then(res => console.log(res.data));
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/users/exists/${userID}`)
+            .then(res => {
+                if (!res.data){ // user is not in the DB, lets create a new user
+                    axios.post(`${process.env.REACT_APP_SERVER_URL}/users/create`, newUser)
+                        .then(console.log(res));
+                }
+            })
+            // now lets add the movie to the user's favs
+            .then(res =>{
+                axios.post(`${process.env.REACT_APP_SERVER_URL}/users/addMovie/${userID}`, {"movieID": movieID})
+                    .then(console.log(res));
+            });
     }
 
     render() {
-        console.log(this.favHandler)
         const movie_url = 'https:/www.themoviedb.org/movie/' + this.props.movie.id
         const title = this.props.movie.title 
 
@@ -52,12 +56,10 @@ class MovieTile extends Component{
                             <FavButton onClick={this.favHandler} />
                         </div>
                     </div>
-                    
-                    
                 </div>
             </div>
         )
     }
 }
 
-export default MovieTile
+export default withAuth0(MovieTile)
