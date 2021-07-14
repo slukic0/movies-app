@@ -1,5 +1,5 @@
 # Movies App #
-This is a Fullstack Application developed using the MongoDB, Express, React, and Nodejs using the [MovieDB API](https://developers.themoviedb.org/3).
+This is a Fullstack Application developed with MongoDB, Express, React, and Nodejs using the [MovieDB API](https://developers.themoviedb.org/3).
 
 ## Prerequisites ##
 ### Install Node JS
@@ -21,15 +21,18 @@ npm install
 
 You must also set the environment variables for both the frontend and backend
 1. Create a `.env` file in `./` and set the following variables
+
    ```bash
    REACT_APP_AUTH0_DOMAIN = your auth0 domain
    REACT_APP_AUTH0_CLIENT_ID = your auth0 clientID
+   REACT_APP_SERVER_URL = server url (eg: http://localhost:4000)
    ```
 2. Create a `.env` file in `./server` and set the following variables
+
    ```
    API_KEY = your MovieDB API key
    ```
 
 ## Running the App ##
 1. Start the React App by navigating to `./` and running `npm start`
-2. Start the React App by navigating to `./server` and running `node server.js`
+2. Start the Server by navigating to `./server` and running `node server` or `nodemon server`

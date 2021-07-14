@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-
-import MovieTile from '../MovieTile/MovieTile';
 import Grid from '../Grid/Grid'
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn'
 
@@ -17,16 +15,15 @@ class Browse extends Component{
     }
 
     getPopular = () =>{
-        const URL = `http://localhost:4000/movies/getpopular/${this.state.pageNum}`
+        const URL = `${process.env.REACT_APP_SERVER_URL}/movies/getpopular/${this.state.pageNum}`
         
         axios.get(URL)
         .then((response) => {
-            response.data.forEach(element => {
-                const tile = <MovieTile key={element.id} movie={element} />
-                this.state.movies.push(tile)
-            });
-            this.setState({loading: false})
-            this.setState({pageNum: this.state.pageNum+1})
+            this.setState({
+                movies: response.data,
+                pageNum: this.state.pageNum+1,
+                loading: false
+            })
         })
         .catch(err =>{
             console.log(err)

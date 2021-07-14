@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-
 import './Search.css'
-import MovieTile from '../MovieTile/MovieTile';
 import Grid from '../Grid/Grid'
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn'
 
@@ -25,19 +23,17 @@ class Search extends Component{
         this.setState({noResults: false})
         this.setState({loading: true})
         //const URL = `${API_URL}/search/movie?&api_key=${API_KEY}&query=${searchTerm}&page=${pageNum}`
-        const URL = `http://localhost:4000/movies/search/${searchTerm}/${pageNum}`
+        const URL = `${process.env.REACT_APP_SERVER_URL}/movies/search/${searchTerm}/${pageNum}`
         
         axios.get(URL)
         .then((response) => {
-            let myMovies = []
-            response.data.forEach(element => {
-                const tile = <MovieTile key={element.id} movie={element} />
-                myMovies.push(tile)
-            });
-            this.setState({movies: myMovies})
-            this.setState({loading: false})
+            this.setState({
+                movies: response.data,
+                pageNum: this.state.pageNum+1,
+                loading: false
+            })
 
-            if (this.state.movies.length === 0 && searchTerm !== ""){
+            if (response.data.length === 0 && searchTerm !== ""){
                 this.setState({noResults: true})
             }
         })
@@ -53,17 +49,16 @@ class Search extends Component{
         this.setState({loading: true})
 
         //const URL = `${API_URL}/search/movie?&api_key=${API_KEY}&query=${searchTerm}&page=${pageNum}`
-        const URL = `http://localhost:4000/movies/search/${searchTerm}/${pageNum}`
+        const URL = `${process.env.REACT_APP_SERVER_URL}/movies/search/${searchTerm}/${pageNum}`
         
         axios.get(URL)
         .then((response) => {
             response.data.forEach(element => {
-                const tile = <MovieTile key={element.id} movie={element} />
-                this.state.movies.push(tile)
+                this.state.movies.push(element)
             });
             this.setState({loading: false})
 
-            if (this.state.movies.length === 0 || searchTerm !== ""){
+            if (response.data.length === 0 && searchTerm !== ""){
                 this.setState({noResults: true})
             }
         })
@@ -87,7 +82,6 @@ class Search extends Component{
     }
 
     render() {
-        console.log(this.state.searchTerm)
         if (this.state.noResults){
             return(
                 <div class='container'>
@@ -103,7 +97,7 @@ class Search extends Component{
         else{
             if (this.state.loading || this.state.searchTerm===""){
                 return(
-                    <div class='container-xl'>
+                    <div class='container-lg'>
                         <input type="text" class="search" placeholder="Search for a movie" onChange={this.changeHandler}/>
                         <br/>
                         <Grid movies={this.state.movies}/>
