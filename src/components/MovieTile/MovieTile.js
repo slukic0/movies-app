@@ -71,7 +71,7 @@ class MovieTile extends Component{
                 .then( (res) =>{
                     boolFav = res.data.fav_movies.includes(movieID)
 
-                    if (boolFav != this.state.isFav)
+                    if (boolFav !== this.state.isFav)
                     this.setState({
                         isFav: boolFav
                     })
@@ -91,7 +91,7 @@ class MovieTile extends Component{
                 .then( (res) =>{
                     boolFav = res.data.fav_movies.includes(movieID)
 
-                    if (boolFav != prevState.isFav){
+                    if (boolFav !== prevState.isFav){
                         this.setState({
                             isFav: boolFav
                         })

@@ -6,9 +6,9 @@ import Navigator from './components/Navigator/Navigator'
 import Browse from './components/Browse/Browse'
 import Search from './components/Search/Search'
 import List from './components/List/List'
+import Profile from "./components/Profile/Profile";
 
 import { Auth0Provider } from "@auth0/auth0-react";
-import Profile from "./components/Profile/Profile";
 
 class App extends Component {
   render() {

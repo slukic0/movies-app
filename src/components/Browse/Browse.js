@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-
 import Grid from '../Grid/Grid'
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn'
 

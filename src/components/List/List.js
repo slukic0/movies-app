@@ -3,7 +3,6 @@ import { Component } from "react"
 import { withAuth0 } from "@auth0/auth0-react";
 import Grid from '../Grid/Grid'
 
-
 class Browse extends Component{
 
     constructor(props){
