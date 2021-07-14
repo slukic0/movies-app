@@ -106,7 +106,7 @@ class Search extends Component{
             }
             else{
                 return(
-                    <div class='container-xl'>
+                    <div class='container-lg'>
                         <input type="text" class="search" placeholder="Search for a movie" onChange={this.changeHandler}/>
                         <br/>
                         <Grid movies={this.state.movies}/>

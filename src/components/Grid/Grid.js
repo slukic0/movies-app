@@ -1,38 +1,27 @@
 import React, { Component } from "react";
 import MovieTile from "../MovieTile/MovieTile";
+import { Row, Col } from 'react-bootstrap';
 
 class Grid extends Component{
-
+    constructor(props){
+        super(props)
+    }
+    
     getMovieGrid = () => {
-        const rowLength = 4
-        const myClass = 'row row-cols-'+rowLength
-
         let movies = []
-        let nRows = this.props.movies.length
-        let rows = []
-
         this.props.movies.forEach(element => {
-            const tile = <MovieTile key={element.id} movie={element} />
-            movies.push(tile)
+            const tile = <MovieTile movie={element} />
+            movies.push(<Col>{tile}</Col>)
         });
-        
-        for (let i = 0; i < nRows*rowLength; i+=rowLength) {
-            
-            let row = []
-
-            for (let j = 0; j < rowLength; j++) {
-                row.push(movies[j+i])
-            }
-
-            rows.push(<div key={i}class={myClass}>{row}<br/></div>)
-        }
-        return(rows);
+        return(movies);
     }
 
     render() {
         return(
             <div class='container-lg'>
-                {this.getMovieGrid()}
+                <Row lg={4} md={3} sm={2} xs={1}>
+                    {this.getMovieGrid()}
+                </Row>
             </div>
         );
     }
