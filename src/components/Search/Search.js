@@ -22,7 +22,6 @@ class Search extends Component{
 
         this.setState({noResults: false})
         this.setState({loading: true})
-        //const URL = `${API_URL}/search/movie?&api_key=${API_KEY}&query=${searchTerm}&page=${pageNum}`
         const URL = `${process.env.REACT_APP_SERVER_URL}/movies/search/${searchTerm}/${pageNum}`
         
         axios.get(URL)

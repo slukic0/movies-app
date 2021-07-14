@@ -3,10 +3,6 @@ import MovieTile from "../MovieTile/MovieTile";
 import { Row, Col } from 'react-bootstrap';
 
 class Grid extends Component{
-    constructor(props){
-        super(props)
-    }
-    
     getMovieGrid = () => {
         let movies = []
         this.props.movies.forEach(element => {

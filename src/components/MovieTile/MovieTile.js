@@ -11,7 +11,6 @@ class MovieTile extends Component{
 
     constructor(props){
         super(props)
-        
         this.state={
             isFav: false,
         }
@@ -116,11 +115,11 @@ class MovieTile extends Component{
 
         if (!this.state.isFav){
             myText = 'Favourite'
-            myVar = 'primary'
+            myVar = 'secondary'
         }
         else{
             myText= 'Unfavourite'
-            myVar = 'secondary'
+            myVar = 'success'
         }
         return(
             <div class='tile'>
@@ -132,17 +131,15 @@ class MovieTile extends Component{
                         <h5 class="text-center">{title}</h5>
                     </Container>
                 </Row>
-                <Row id='buttons'>
-                    <Col>
-                        <div className="d-grid gap-2">
-                            <Button variant="primary" onClick={ () => {window.open(movie_url, '_blank')} }>View</Button>
-                        </div>
-                    </Col>
-                    <Col>
-                        <div className="d-grid gap-2">
-                            <Button variant={myVar} onClick={this.onClickHandler} disabled={!isAuthenticated}>{myText}</Button>
-                        </div>
-                    </Col>
+                <Row id='viewButton'>
+                    <div className="d-grid gap-2">
+                        <Button variant="primary" size="sm" href={movie_url} target='_blank' rel='noopener noreferrer'>View</Button>
+                    </div>
+                </Row>
+                <Row id='favButton'>
+                    <div className="d-grid gap-2">
+                        <Button variant={myVar} size="sm" onClick={this.onClickHandler} disabled={!isAuthenticated}>{myText}</Button>
+                    </div>
                 </Row>
             </div>
         )
