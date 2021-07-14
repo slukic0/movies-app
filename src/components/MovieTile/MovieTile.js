@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import OverlayButton from '../OverlayButton/OverlayButton'
 import noPoster from '../../images/noPoster.png'
 import './MovieTile.css'
 import {withAuth0 } from "@auth0/auth0-react";
-import { Col, Row, Image, Button, Container } from 'react-bootstrap';
+import { Row, Image, Button, Container } from 'react-bootstrap';
 
 const POSTER_SIZE = 'w500/'
 
@@ -104,7 +105,7 @@ class MovieTile extends Component{
         const { isAuthenticated } = this.props.auth0
         const movie_url = 'https:/www.themoviedb.org/movie/' + this.props.movie.id
         const title = this.props.movie.title 
-        let poster_url, myText, myVar
+        let poster_url, myText, myVar, favButton
 
         if (this.props.movie.poster_path == null){
             poster_url= noPoster
@@ -121,6 +122,14 @@ class MovieTile extends Component{
             myText= 'Unfavourite'
             myVar = 'success'
         }
+
+        if (isAuthenticated){
+            favButton = (<Button variant={myVar} size="sm" onClick={this.onClickHandler} >{myText}</Button>)
+        }
+        else{
+            favButton = (<OverlayButton variant={myVar} size="sm" text={myText} tip="Please log in to favourite a movie!"/>)
+        }
+        
         return(
             <div class='tile'>
                 <Row>
@@ -138,7 +147,7 @@ class MovieTile extends Component{
                 </Row>
                 <Row id='favButton'>
                     <div className="d-grid gap-2">
-                        <Button variant={myVar} size="sm" onClick={this.onClickHandler} disabled={!isAuthenticated}>{myText}</Button>
+                        {favButton}
                     </div>
                 </Row>
             </div>
