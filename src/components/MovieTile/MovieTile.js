@@ -101,7 +101,6 @@ class MovieTile extends Component{
     }
 
     render() {
-        console.log('render');
         const { isAuthenticated } = this.props.auth0
         const movie_url = 'https:/www.themoviedb.org/movie/' + this.props.movie.id
         const title = this.props.movie.title 
