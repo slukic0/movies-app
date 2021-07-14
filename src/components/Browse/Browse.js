@@ -19,8 +19,12 @@ class Browse extends Component{
         
         axios.get(URL)
         .then((response) => {
+            response.data.forEach(element => {
+                this.setState( prevState => ({
+                    movies: [...prevState.movies, element]
+                }))
+            })
             this.setState({
-                movies: response.data,
                 pageNum: this.state.pageNum+1,
                 loading: false
             })
@@ -46,7 +50,7 @@ class Browse extends Component{
         }
         else{
             return(
-                <div class='container-xl'>
+                <div class='container-lg'>
                     <Grid movies={this.state.movies}/>
                     <LoadMoreBtn text='Load More' onClick={this.getPopular}/>
                 </div>

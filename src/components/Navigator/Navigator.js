@@ -1,39 +1,30 @@
 import React, { Component } from 'react';
+import { Nav, Navbar, Container } from 'react-bootstrap';
+// eslint-disable-next-line
 import { BrowserRouter as Route, Link } from "react-router-dom";
 import UserLogin from '../UserLogin//UserLogin'
 
 class Navigator extends Component{
-    render() {
+    render(){
         return(
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-                <Link to="/" class="navbar-brand">Movies-App</Link>
-                <div class="collpase navbar-collapse">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="navbar-item">
-                            <Link to="/" class="nav-link">Popular Movies</Link>
-                        </li>
-                        <li class="navbar-item">
-                            <Link to="/search" class="nav-link">Search Movie</Link>
-                        </li>
-                        <li class="navbar-item">
-                            <Link to="/list" class="nav-link">Favourites</Link>
-                        </li>
-                        <li class="navbar-item" style={{cursor: 'pointer'}}>
-                            <a href='https://github.com/Laemonz/movies-app' class="nav-link" target='_blank' rel="noopener noreferrer">View Source</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="collpase navbar-collapse">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="navbar-item">
-                            <Link to="/profile" class="nav-link">Profile</Link>
-                        </li>
-                        <li>
-                            <UserLogin/>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <Navbar bg="light" expand="lg" sticky='top'>
+            <Container fluid>
+                <Navbar.Brand href="/">Movies-App</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                    <Nav.Link as={Link} to="/">Popular Movies</Nav.Link>
+                    <Nav.Link as={Link} to="/search">Search Movie</Nav.Link>
+                    <Nav.Link as={Link} to="/list">Favourites</Nav.Link>
+                    <Nav.Link href='https://github.com/Laemonz/movies-app' target='_blank' rel="noopener noreferrer">View Source</Nav.Link>
+                </Nav>
+                <Nav>
+                    <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
+                    <UserLogin/>
+                </Nav>
+                </Navbar.Collapse>
+            </Container>
+            </Navbar>
         )
     }
 }

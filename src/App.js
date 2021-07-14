@@ -22,12 +22,11 @@ class App extends Component {
         <Switch>
           <div class="container-fluid">
             <Navigator/>
-            <br/> <br/> <br/>
+            <br/>
             <Route path="/" exact component={Browse} />
             <Route path="/search" component={Search} />
             <Route path="/list" component={List} />
             <Route path="/profile" component={Profile} />
-
           </div>
         </Switch>
       </Router>
