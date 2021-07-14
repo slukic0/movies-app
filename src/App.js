@@ -6,7 +6,8 @@ import Navigator from './components/Navigator/Navigator'
 import Browse from './components/Browse/Browse'
 import Search from './components/Search/Search'
 import List from './components/List/List'
-import Profile from "./components/Profile/Profile";
+import Profile from './components/Profile/Profile';
+import PageNotFound from './components/PageNotFound/PageNotFound'
 
 import { Auth0Provider } from "@auth0/auth0-react";
 
@@ -19,15 +20,13 @@ class App extends Component {
       redirectUri={window.location.origin}
     >
       <Router>
+      <Navigator/>
         <Switch>
-          <div class="container-fluid">
-            <Navigator/>
-            <br/>
             <Route path="/" exact component={Browse} />
-            <Route path="/search" component={Search} />
-            <Route path="/list" component={List} />
-            <Route path="/profile" component={Profile} />
-          </div>
+            <Route path="/search" exact component={Search} />
+            <Route path="/list" exact component={List} />
+            <Route path="/profile" exact component={Profile} />
+            <Route path='*' component={PageNotFound} />
         </Switch>
       </Router>
     </Auth0Provider>

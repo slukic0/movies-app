@@ -9,7 +9,7 @@ class Navigator extends Component{
         return(
             <Navbar bg="light" expand="lg" sticky='top'>
             <Container fluid>
-                <Navbar.Brand href="/">Movies-App</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">Movies-App</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">

@@ -7,7 +7,7 @@ class Grid extends Component{
         let movies = []
         this.props.movies.forEach(element => {
             const tile = <MovieTile movie={element} />
-            movies.push(<Col>{tile}</Col>)
+            movies.push(<Col key={element.id}>{tile}</Col>)
         });
         return(movies);
     }
