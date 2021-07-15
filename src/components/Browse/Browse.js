@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import Grid from '../Grid/Grid'
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn'
+import { Spinner } from 'react-bootstrap';
 
 class Browse extends Component{
 
@@ -40,13 +41,7 @@ class Browse extends Component{
 
     render() {
         if (this.state.loading){
-            return(
-                <div class='container text-center'>
-                    <div class="spinner-border text-center" role="status">
-                        <span class="sr-only"></span>
-                    </div>
-                </div>
-            )
+            return(<Spinner />)
         }
         else{
             return(

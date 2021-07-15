@@ -2,6 +2,7 @@ import axios from "axios"
 import { Component } from "react"
 import { withAuth0 } from "@auth0/auth0-react";
 import Grid from '../Grid/Grid'
+import { Spinner } from "react-bootstrap";
 
 class Browse extends Component{
 
@@ -64,13 +65,7 @@ class Browse extends Component{
         }
         else{
             if (this.state.loading){
-                return(
-                    <div class='container text-center'>
-                        <div class="spinner-border text-center" role="status">
-                            <span class="sr-only"></span>
-                        </div>
-                    </div>
-                )
+                return(<Spinner />)
             }
             else if (this.state.favMovies.length === 0){
                 return (

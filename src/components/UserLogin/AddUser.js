@@ -2,6 +2,7 @@ import { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { withAuth0 } from "@auth0/auth0-react";
+import { Spinner } from "react-bootstrap";
 
 class AddUser extends Component{
 
@@ -11,16 +12,6 @@ class AddUser extends Component{
             loading: false,
             done: false
         }
-    }
-
-    spinner = () => {
-        return(
-            <div class='container text-center'>
-                <div class="spinner-border text-center" role="status">
-                    <span class="sr-only"></span>
-                </div>
-            </div>
-        )
     }
 
     addUserToDB = () => {
@@ -46,8 +37,6 @@ class AddUser extends Component{
                     this.setState({done: true})
                 })
         }
-
-        return(this.spinner())
     }
 
     componentDidUpdate = () => {
@@ -65,7 +54,7 @@ class AddUser extends Component{
             return(<Redirect to='/'/>);
         }
         else{
-            return (this.spinner())
+            return(<Spinner />)
         }
     }
 }
