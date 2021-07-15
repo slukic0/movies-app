@@ -53,15 +53,23 @@ class AddUser extends Component{
         return(this.spinner())
     }
 
+    componentDidUpdate = () => {
+        const { isLoading } = this.props.auth0
+
+        if (isLoading || (!this.state.done && !this.state.loading) ){
+            this.setState({loading: true}, () => {
+                console.log('call addUserToDB');
+                (this.addUserToDB())
+            })
+        }
+    }
+
     render(){
         const { isLoading } = this.props.auth0
         console.log('isLoading: '+isLoading);
         
-        if (isLoading || (!this.state.done && !this.state.loading) ){
-            console.log('call addUserToDB');
-            return(this.addUserToDB())
-        }
-        else if (this.state.done) {
+        
+        if (this.state.done) {
             console.log('redirecting');
             return(<Redirect to='/'/>);
         }
