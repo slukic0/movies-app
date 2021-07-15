@@ -8,7 +8,7 @@ class Profile extends Component {
 
     if (!isAuthenticated){
       return (
-        <div class="alert alert-danger" role="alert">
+        <div className="alert alert-danger" role="alert">
           Please log in to view your profile!
         </div>
       )

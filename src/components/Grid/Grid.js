@@ -14,7 +14,7 @@ class Grid extends Component{
 
     render() {
         return(
-            <div class='container-lg'>
+            <div className='container-lg'>
                 <Row lg={4} md={3} sm={2} xs={1}>
                     {this.getMovieGrid()}
                 </Row>

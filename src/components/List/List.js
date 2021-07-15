@@ -58,7 +58,7 @@ class Browse extends Component{
 
         if (!isAuthenticated){
             return (
-              <div class="alert alert-danger" role="alert">
+              <div className="alert alert-danger" role="alert">
                 Please log in to view your favourite movies!
               </div>
             )
@@ -69,14 +69,14 @@ class Browse extends Component{
             }
             else if (this.state.favMovies.length === 0){
                 return (
-                    <div class="alert alert-primary" role="alert">
+                    <div className="alert alert-primary" role="alert">
                       You have no favourite movies!
                     </div>
                   )
             }
             else{
                 return(
-                    <div class='container-xl'>
+                    <div className='container-xl'>
                         <Grid movies={this.state.favMovies} />
                     </div>  
                 );

@@ -94,13 +94,13 @@ class MovieTile extends Component{
         }
         
         return(
-            <div class='tile'>
+            <div className='tile'>
                 <Row>
                     <Image src={poster_url} fluid />
                 </Row>
                 <Row id='text'>
                     <Container>
-                        <h5 class="text-center">{title}</h5>
+                        <h5 className="text-center">{title}</h5>
                     </Container>
                 </Row>
                 <Row id='viewButton'>
