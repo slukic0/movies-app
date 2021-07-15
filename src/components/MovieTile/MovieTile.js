@@ -32,7 +32,6 @@ class MovieTile extends Component{
         const movieID = this.props.movie.id
 
         axios.post(`${process.env.REACT_APP_SERVER_URL}/users/addMovie/${userID}`, {"movieID": movieID})
-            .then( (res) => console.log(res))
             .then(this.setState({isFav: true}))
     }
 
@@ -42,7 +41,6 @@ class MovieTile extends Component{
         const movieID = this.props.movie.id
 
         axios.post(`${process.env.REACT_APP_SERVER_URL}/users/removeMovie/${userID}`, {"movieID": movieID})
-            .then( (res) => console.log(res))
             .then(this.setState({isFav: false}))
     }
 

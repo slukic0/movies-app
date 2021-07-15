@@ -27,14 +27,11 @@ class AddUser extends Component{
         const { user, isLoading } = this.props.auth0
         
         if(!isLoading && !this.state.done){
-            console.log('checking if user in DB')
             const userID = user.sub
 
             axios.get(`${process.env.REACT_APP_SERVER_URL}/users/exists/${userID}`)
                 .then(res => {
-                    console.log(res)
                     if (!res.data){ // user is not in the DB, lets create a new user
-                        console.log('adding user to db')
                         const newUser = {
                             identifier: userID,
                             fav_movies: []
@@ -58,19 +55,13 @@ class AddUser extends Component{
 
         if (isLoading || (!this.state.done && !this.state.loading) ){
             this.setState({loading: true}, () => {
-                console.log('call addUserToDB');
                 (this.addUserToDB())
             })
         }
     }
 
-    render(){
-        const { isLoading } = this.props.auth0
-        console.log('isLoading: '+isLoading);
-        
-        
+    render(){       
         if (this.state.done) {
-            console.log('redirecting');
             return(<Redirect to='/'/>);
         }
         else{
