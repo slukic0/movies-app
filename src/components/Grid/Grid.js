@@ -9,6 +9,7 @@ class Grid extends Component{
         super(props)
         this.state=({
             movies: [],
+            favs: []
         })
     }
 
@@ -25,23 +26,31 @@ class Grid extends Component{
         }
     }
 
-    componentDidMount = async() => {
-        const favs = await this.getFavs()
+    getMovies = () => {
         let myMovies = []
-
         this.props.movies.forEach(element => {
-            const isFav = favs.includes(element.id)
+            const isFav = this.state.favs.includes(element.id)
             const tile = <MovieTile movie={element} isFav={isFav}/>
             myMovies.push(<Col key={element.id}>{tile}</Col>)
         });
-        this.setState({movies: myMovies})
+        return myMovies
+
+    }
+
+    componentDidUpdate = (prevProps, prevState) => {
+        if (this.props.movies !== prevProps.movies){
+            this.setState({movies: this.getMovies()})
+        }
+    }
+
+    componentDidMount = async() => {
+        this.setState({favs: await this.getFavs()}, () => {
+            this.setState({movies: this.getMovies()})
+        })
+        
     }
 
     render() {
-        console.log('grid this.props.movies');
-        console.log(this.props.movies);
-        console.log('grid movies');
-        console.log(this.state.movies);
         return(
             <div className='container-lg'>
                 <Row lg={4} md={3} sm={2} xs={1}>
