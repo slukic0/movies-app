@@ -83,11 +83,11 @@ class Search extends Component{
     render() {
         if (this.state.noResults){
             return(
-                <div class='container'>
-                    <input type="text" class="search" placeholder="Search for a movie" onChange={this.changeHandler}/>
+                <div className='container'>
+                    <input type="text" className="search" placeholder="Search for a movie" onChange={this.changeHandler}/>
                     <br/>
                     <Grid movies={this.state.movies}/>
-                    <div class="alert alert-primary" role="alert">
+                    <div className="alert alert-primary" role="alert">
                         No results found
                     </div>
                 </div>  
@@ -96,8 +96,8 @@ class Search extends Component{
         else{
             if (this.state.loading || this.state.searchTerm===""){
                 return(
-                    <div class='container-lg'>
-                        <input type="text" class="search" placeholder="Search for a movie" onChange={this.changeHandler}/>
+                    <div className='container-lg'>
+                        <input type="text" className="search" placeholder="Search for a movie" onChange={this.changeHandler}/>
                         <br/>
                         <Grid movies={this.state.movies}/>
                     </div>  
@@ -105,8 +105,8 @@ class Search extends Component{
             }
             else{
                 return(
-                    <div class='container-lg'>
-                        <input type="text" class="search" placeholder="Search for a movie" onChange={this.changeHandler}/>
+                    <div className='container-lg'>
+                        <input type="text" className="search" placeholder="Search for a movie" onChange={this.changeHandler}/>
                         <br/>
                         <Grid movies={this.state.movies}/>
                         <LoadMoreBtn text='Load More' onClick={this.clickHandler}/>

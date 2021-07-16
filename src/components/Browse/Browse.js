@@ -45,7 +45,7 @@ class Browse extends Component{
         }
         else{
             return(
-                <div class='container-lg'>
+                <div className='container-lg'>
                     <Grid movies={this.state.movies}/>
                     <LoadMoreBtn text='Load More' onClick={this.getPopular}/>
                 </div>
