@@ -3,8 +3,8 @@ import axios from 'axios'
 import OverlayButton from '../OverlayButton/OverlayButton'
 import noPoster from '../../images/noPoster.png'
 import './MovieTile.css'
-import {withAuth0 } from "@auth0/auth0-react";
 import { Row, Image, Button, Container } from 'react-bootstrap';
+import {withAuth0 } from "@auth0/auth0-react";
 
 const POSTER_SIZE = 'w500/'
 
@@ -13,7 +13,7 @@ class MovieTile extends Component{
     constructor(props){
         super(props)
         this.state={
-            isFav: false,
+            isFav: false
         }
     }
 
@@ -41,27 +41,11 @@ class MovieTile extends Component{
         const movieID = this.props.movie.id
 
         axios.post(`${process.env.REACT_APP_SERVER_URL}/users/removeMovie/${userID}`, {"movieID": movieID})
-            .then(this.setState({isFav: false}))
+            .then(this.setState({isFav: false}));
     }
 
     componentDidMount = () => {
-        const { user, isAuthenticated } = this.props.auth0
-
-        if (isAuthenticated){
-            const userID = user.sub
-            const movieID = this.props.movie.id
-            let boolFav
-
-            axios.get(`${process.env.REACT_APP_SERVER_URL}/users/get/${userID}`)
-                .then( (res) =>{
-                    boolFav = res.data.fav_movies.includes(movieID)
-
-                    if (boolFav !== this.state.isFav)
-                    this.setState({
-                        isFav: boolFav
-                    })
-                }) 
-        }
+        this.setState({isFav: this.props.isFav})
     }
 
     render() {
