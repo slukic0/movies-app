@@ -3,5 +3,23 @@
     margin-bottom: 30px;
     margin-right: 30px;
     margin-left: 30px;
-    background-color: lightgray;
+
+    background-color: #cfe1fc;
+    border: #8f8f8f groove 1px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+.tile-img {
+    border: 0px;
+}
+
+.tile-btn  { 
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+         border-radius: 0 !important;
+}
+
+.title {
+    text-align: center;
+    white-space: pre-line;
 }

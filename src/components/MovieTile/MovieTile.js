@@ -51,7 +51,7 @@ class MovieTile extends Component{
     render() {
         const { isAuthenticated } = this.props.auth0
         const movie_url = 'https:/www.themoviedb.org/movie/' + this.props.movie.id
-        const title = this.props.movie.title 
+        const title = this.props.movie.title
         let poster_url, myText, myVar, favButton
 
         if (this.props.movie.poster_path == null){
@@ -71,25 +71,24 @@ class MovieTile extends Component{
         }
 
         if (isAuthenticated){
-            favButton = (<Button variant={myVar} size="sm" onClick={this.onClickHandler} >{myText}</Button>)
+            favButton = (<Button variant={myVar} className='tile-btn' size="sm" onClick={this.onClickHandler} >{myText}</Button>)
         }
         else{
-            favButton = (<OverlayButton variant={myVar} size="sm" text={myText} tip="Please log in to favourite a movie!"/>)
+            favButton = (<OverlayButton variant={myVar} className='tile-btn' size="sm" text={myText} tip="Please log in to favourite a movie!"/>)
         }
-        
         return(
             <div className='tile'>
                 <Row>
-                    <Image src={poster_url} fluid />
+                    <Image src={poster_url} fluid className='tile-img' />
                 </Row>
                 <Row id='text'>
-                    <Container>
-                        <h5 className="text-center">{title}</h5>
+                    <Container style={{border: '0px'}}>
+                        <h5 className="title">{title}</h5>
                     </Container>
                 </Row>
                 <Row id='viewButton'>
                     <div className="d-grid gap-2">
-                        <Button variant="primary" size="sm" href={movie_url} target='_blank' rel='noopener noreferrer'>View</Button>
+                        <Button variant="primary" className='tile-btn' size="sm" href={movie_url} target='_blank' rel='noopener noreferrer'>View</Button>
                     </div>
                 </Row>
                 <Row id='favButton'>

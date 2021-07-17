@@ -12,6 +12,7 @@ class OverlayButton extends Component {
             {({ ref, ...triggerHandler }) => (
                 <div className="d-grid gap-2" ref={ref}> 
                     <Button
+                        className={this.props.className}
                         variant={this.props.variant}
                         size={this.props.size}
                         onClick={this.props.onClick}
