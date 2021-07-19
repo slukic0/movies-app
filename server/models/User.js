@@ -8,6 +8,10 @@ const user = new Schema({
     },
     fav_movies: {
         type: [Number]
+    },
+    email: {
+        type: String,
+        required: true
     }
 })
 
