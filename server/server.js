@@ -8,9 +8,9 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
-mongoose.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true, useUnifiedTopology:true });
+mongoose.connect('mongodb://127.0.0.1:27017/movies', { useNewUrlParser: true, useUnifiedTopology:true });
 const connection = mongoose.connection;
 
 connection.once('open', function() {
