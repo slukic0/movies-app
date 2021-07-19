@@ -28,4 +28,5 @@ app.use('/users', users)
 
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
+    (MONGODB_URI==='mongodb://127.0.0.1:27017') ? console.log('Connecting to local MongoDB database...') : console.log('Connecting to MongoDB Atlas database...')
 });
