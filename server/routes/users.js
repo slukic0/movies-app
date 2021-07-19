@@ -52,7 +52,8 @@ router.route("/exists/:userID").get(function(req, res) {
 router.route('/create').post(function(req,res){
     const user = new User({
         identifier: req.body.identifier,
-        fav_movies: req.body.fav_movies
+        fav_movies: req.body.fav_movies,
+        email: req.body.email
     });
 
     console.log(user)
@@ -62,21 +63,6 @@ router.route('/create').post(function(req,res){
         })
         .catch(err => {
             res.status(400).send('Error: cannot add user!');
-        });
-})
-
-/**
- * Delete a user
- */
- router.route('/delete/:userID').get(function(req,res){
-    const userID = req.params.userID;
-
-    User.deleteOne( { identifier: userID } )
-        .then( () => {
-            res.status(200).send('User deleted!');
-        })
-        .catch(err => {
-            res.status(400).send('Error: cannot delete user!');
         });
 })
 

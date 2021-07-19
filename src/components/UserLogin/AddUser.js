@@ -25,7 +25,8 @@ class AddUser extends Component{
                     if (!res.data){ // user is not in the DB, lets create a new user
                         const newUser = {
                             identifier: userID,
-                            fav_movies: []
+                            fav_movies: [],
+                            email: user.email
                         };
                         axios.post(`${process.env.REACT_APP_SERVER_URL}/users/create`, newUser)
                             .then( () => {
