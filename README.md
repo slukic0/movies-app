@@ -14,7 +14,11 @@ Download the project and open the root directory.
 Run the following commands to install the required packages
 
 ```bash
+cd client
 npm install
+
+cd ..
+
 cd server
 npm install
 ```
@@ -30,12 +34,12 @@ You must also set the environment variables for both the frontend and backend
    
 2. Create a `.env` file in `/server` and set the following variables
 
-   ```
+   ```bash
    API_KEY = your MovieDB API key
-   MONGODB_URI= your mongoDB connection string
+   MONGODB_URI = your mongoDB connection string
    PORT = your server port here
    ```
 
 ## Running the App ##
-1. Start the React App by navigating to `/` and running `npm start`
+1. Start the React App by navigating to `/client` and running `npm start`
 2. Start the Server by navigating to `/server` and running `node server` or `nodemon server`
