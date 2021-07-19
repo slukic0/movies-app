@@ -32,6 +32,7 @@ You must also set the environment variables for both the frontend and backend
 
    ```
    API_KEY = your MovieDB API key
+   PORT = your server port here
    ```
 
 ## Running the App ##
