@@ -11,12 +11,13 @@ class Browse extends Component{
         this.state={
             loading: true,
             movies: [],
-            pageNum: 1
+            pageNum: 1,
+            server: process.env.REACT_APP_SERVER_URL || ''
         }
     }
 
     getPopular = () =>{
-        const URL = `/movies/getpopular/${this.state.pageNum}`
+        const URL = this.state.server+`/movies/getpopular/${this.state.pageNum}`
         
         axios.get(URL)
         .then((response) => {

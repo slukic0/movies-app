@@ -11,7 +11,8 @@ class Browse extends Component{
         super(props)
         this.state={
             loading: true,
-            favMovies: []
+            favMovies: [],
+            server: process.env.REACT_APP_SERVER_URL || ''
         }
     }
 
@@ -19,7 +20,7 @@ class Browse extends Component{
         const { user } = this.props.auth0
         const userID = user.sub
 
-        axios.get(`/users/get/${userID}`)
+        axios.get(this.state.server+`/users/get/${userID}`)
             .then( (res) =>{
                 this.getMovieDetails(res.data.fav_movies)
             })
@@ -31,7 +32,7 @@ class Browse extends Component{
 
         movieList.forEach(element => {
             promiseArray.push(
-                axios.get(`/movies/getmovie/${element}`)
+                axios.get(this.state.server+`/movies/getmovie/${element}`)
                     .then(res =>{
                         movies.push(res.data)
                     })

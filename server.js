@@ -13,14 +13,24 @@ app.use(express.urlencoded({extended: true}));
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017' //connect to DB or use local DB
 const PORT = process.env.PORT || 4000;
 
+const movies = require('./routes/movies')
+const users = require('./routes/users')
+
+app.use('/movies', movies)
+app.use('/users', users)
 
 // set NODE_ENV to production to run the production build of the app
 // this will use express to send our react app to the client
 if (process.env.NODE_ENV === 'production'){
     console.log('Server is running in production mode');
-    app.use(express.static(path.join(__dirname, 'client/build')))
-    app.get('/', (req, res) => {
-        res.sendFile(path.join(__dirname, 'client/build/index.html'))
+
+    app.use(express.static(path.join(__dirname, '/client/build')))
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'), (err)=>{
+            if (err) {
+              res.status(500).send(err)
+            }
+        })
     })
 } else {
     app.get('/', (req,res) => {
@@ -35,11 +45,6 @@ connection.once('open', function() {
     console.log("MongoDB database connection established successfully");
 })
 
-const movies = require('./routes/movies')
-const users = require('./routes/users')
-
-app.use('/movies', movies)
-app.use('/users', users)
 
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);

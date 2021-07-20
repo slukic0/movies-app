@@ -13,7 +13,8 @@ class Search extends Component{
             searchTerm: "",
             currentPage: 1,
             loading: false,
-            noResults: false
+            noResults: false,
+            server: process.env.REACT_APP_SERVER_URL || ''
         }
     }
 
@@ -22,7 +23,7 @@ class Search extends Component{
 
         this.setState({noResults: false})
         this.setState({loading: true})
-        const URL = `/movies/search/${searchTerm}/${pageNum}`
+        const URL = this.state.server+`/movies/search/${searchTerm}/${pageNum}`
         
         axios.get(URL)
         .then((response) => {
@@ -47,8 +48,7 @@ class Search extends Component{
         this.setState({noResults: false})
         this.setState({loading: true})
 
-        //const URL = `${API_URL}/search/movie?&api_key=${API_KEY}&query=${searchTerm}&page=${pageNum}`
-        const URL = `/movies/search/${searchTerm}/${pageNum}`
+        const URL = this.state.server+`/movies/search/${searchTerm}/${pageNum}`
         
         axios.get(URL)
         .then((response) => {

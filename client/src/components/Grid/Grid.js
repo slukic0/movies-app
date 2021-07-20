@@ -10,7 +10,8 @@ class Grid extends Component{
         super(props)
         this.state=({
             movies: [],
-            favs: []
+            favs: [],
+            server: process.env.REACT_APP_SERVER_URL || ''
         })
     }
 
@@ -19,7 +20,7 @@ class Grid extends Component{
 
         if (isAuthenticated){
             const userID = user.sub
-            const res = await axios.get(`/users/get/${userID}`)
+            const res = await axios.get(this.state.server+`/users/get/${userID}`)
             return res.data.fav_movies
         }
         else{

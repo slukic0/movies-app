@@ -13,7 +13,8 @@ class MovieTile extends Component{
     constructor(props){
         super(props)
         this.state={
-            isFav: false
+            isFav: false,
+            server: process.env.REACT_APP_SERVER_URL || ''
         }
     }
 
@@ -31,7 +32,7 @@ class MovieTile extends Component{
         const userID = user.sub
         const movieID = this.props.movie.id
 
-        axios.post(`/users/addMovie/${userID}`, {"movieID": movieID})
+        axios.post(this.state.server+`/users/addMovie/${userID}`, {"movieID": movieID})
             .then(this.setState({isFav: true}))
     }
 
@@ -40,7 +41,7 @@ class MovieTile extends Component{
         const userID = user.sub
         const movieID = this.props.movie.id
 
-        axios.post(`/users/removeMovie/${userID}`, {"movieID": movieID})
+        axios.post(this.state.server+`/users/removeMovie/${userID}`, {"movieID": movieID})
             .then(this.setState({isFav: false}));
     }
 
