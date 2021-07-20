@@ -2,7 +2,8 @@ import { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { withAuth0 } from "@auth0/auth0-react";
-import { Spinner } from "react-bootstrap";
+import Spinner from '../Spinner/Spinner'
+
 
 class AddUser extends Component{
 

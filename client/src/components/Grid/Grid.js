@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import MovieTile from "../MovieTile/MovieTile";
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, } from 'react-bootstrap';
 import axios from "axios";
 import { withAuth0 } from "@auth0/auth0-react";
+import Spinner from '../Spinner/Spinner'
 
 class Grid extends Component{
     constructor(props){
@@ -51,6 +52,9 @@ class Grid extends Component{
     }
 
     render() {
+        if (!this.state.movies){
+            return <Spinner />
+        }
         return(
             <div className='container-lg'>
                 <Row lg={4} md={3} sm={2} xs={1}>

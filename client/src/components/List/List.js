@@ -2,7 +2,8 @@ import axios from "axios"
 import { Component } from "react"
 import { withAuth0 } from "@auth0/auth0-react";
 import Grid from '../Grid/Grid'
-import { Spinner } from "react-bootstrap";
+import Spinner from '../Spinner/Spinner'
+
 
 class Browse extends Component{
 
