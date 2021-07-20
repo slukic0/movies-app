@@ -14,11 +14,19 @@ import { Auth0Provider } from "@auth0/auth0-react";
 
 class App extends Component {
   render() {
+    let redirect
+    if (!process.env.REACT_APP_SERVER_URL){
+      redirect = ''
+    }
+    else{
+      redirect = window.location.origin+'/loggedIn'
+    }
+    console.log(redirect);
     return (
     <Auth0Provider
       domain={process.env.REACT_APP_AUTH0_DOMAIN}
       clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
-      redirectUri={window.location.origin+'/loggedIn'}
+      redirectUri={redirect}
     >
       <Router>
       <Navigator/>

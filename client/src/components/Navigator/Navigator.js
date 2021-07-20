@@ -7,7 +7,7 @@ import UserLogin from '../UserLogin//UserLogin'
 class Navigator extends Component{
     render(){
         return(
-            <Navbar bg="light" expand="lg" sticky='top'>
+            <Navbar bg="light" expand="lg">
             <Container fluid>
                 <Navbar.Brand as={Link} to="/">Movies-App</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

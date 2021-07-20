@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import Grid from '../Grid/Grid'
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn'
-import { Spinner } from 'react-bootstrap';
+import Spinner from '../Spinner/Spinner'
 
 class Browse extends Component{
 
@@ -11,12 +11,13 @@ class Browse extends Component{
         this.state={
             loading: true,
             movies: [],
-            pageNum: 1
+            pageNum: 1,
+            server: process.env.REACT_APP_SERVER_URL || ''
         }
     }
 
     getPopular = () =>{
-        const URL = `${process.env.REACT_APP_SERVER_URL}/movies/getpopular/${this.state.pageNum}`
+        const URL = this.state.server+`/movies/getpopular/${this.state.pageNum}`
         
         axios.get(URL)
         .then((response) => {

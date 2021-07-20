@@ -2,7 +2,8 @@ import { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { withAuth0 } from "@auth0/auth0-react";
-import { Spinner } from "react-bootstrap";
+import Spinner from '../Spinner/Spinner'
+
 
 class AddUser extends Component{
 
@@ -10,7 +11,8 @@ class AddUser extends Component{
         super(props)
         this.state={
             loading: false,
-            done: false
+            done: false,
+            server: process.env.REACT_APP_SERVER_URL || ''
         }
     }
 
@@ -20,7 +22,7 @@ class AddUser extends Component{
         if(!isLoading && !this.state.done){
             const userID = user.sub
 
-            axios.get(`${process.env.REACT_APP_SERVER_URL}/users/exists/${userID}`)
+            axios.get(this.state.server+`/users/exists/${userID}`)
                 .then(res => {
                     if (!res.data){ // user is not in the DB, lets create a new user
                         const newUser = {
@@ -28,7 +30,7 @@ class AddUser extends Component{
                             fav_movies: [],
                             email: user.email
                         };
-                        axios.post(`${process.env.REACT_APP_SERVER_URL}/users/create`, newUser)
+                        axios.post(this.state.server+`/users/create`, newUser)
                             .then( () => {
                                 console.log('added user')
                             })

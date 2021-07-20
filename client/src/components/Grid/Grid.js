@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import MovieTile from "../MovieTile/MovieTile";
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, } from 'react-bootstrap';
 import axios from "axios";
 import { withAuth0 } from "@auth0/auth0-react";
+import Spinner from '../Spinner/Spinner'
 
 class Grid extends Component{
     constructor(props){
         super(props)
         this.state=({
             movies: [],
-            favs: []
+            favs: [],
+            server: process.env.REACT_APP_SERVER_URL || ''
         })
     }
 
@@ -18,7 +20,7 @@ class Grid extends Component{
 
         if (isAuthenticated){
             const userID = user.sub
-            const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/users/get/${userID}`)
+            const res = await axios.get(this.state.server+`/users/get/${userID}`)
             return res.data.fav_movies
         }
         else{
@@ -51,6 +53,9 @@ class Grid extends Component{
     }
 
     render() {
+        if (!this.state.movies){
+            return <Spinner />
+        }
         return(
             <div className='container-lg'>
                 <Row lg={4} md={3} sm={2} xs={1}>

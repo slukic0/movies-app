@@ -13,7 +13,8 @@ class MovieTile extends Component{
     constructor(props){
         super(props)
         this.state={
-            isFav: false
+            isFav: false,
+            server: process.env.REACT_APP_SERVER_URL || ''
         }
     }
 
@@ -31,7 +32,7 @@ class MovieTile extends Component{
         const userID = user.sub
         const movieID = this.props.movie.id
 
-        axios.post(`${process.env.REACT_APP_SERVER_URL}/users/addMovie/${userID}`, {"movieID": movieID})
+        axios.post(this.state.server+`/users/addMovie/${userID}`, {"movieID": movieID})
             .then(this.setState({isFav: true}))
     }
 
@@ -40,7 +41,7 @@ class MovieTile extends Component{
         const userID = user.sub
         const movieID = this.props.movie.id
 
-        axios.post(`${process.env.REACT_APP_SERVER_URL}/users/removeMovie/${userID}`, {"movieID": movieID})
+        axios.post(this.state.server+`/users/removeMovie/${userID}`, {"movieID": movieID})
             .then(this.setState({isFav: false}));
     }
 
@@ -50,7 +51,7 @@ class MovieTile extends Component{
 
     render() {
         const { isAuthenticated } = this.props.auth0
-        const movie_url = 'https:/www.themoviedb.org/movie/' + this.props.movie.id
+        const movie_url = 'https://www.themoviedb.org/movie/' + this.props.movie.id
         const title = this.props.movie.title
         let poster_url, myText, myVar, favButton
 
@@ -79,7 +80,9 @@ class MovieTile extends Component{
         return(
             <div className='tile'>
                 <Row>
-                    <Image src={poster_url} fluid className='tile-img' />
+                    <a href={movie_url} target='_blank' rel='noopener noreferrer'>
+                        <Image src={poster_url} fluid className='tile-img' />
+                    </a>
                 </Row>
                 <Row id='text'>
                     <Container style={{border: '0px'}}>
