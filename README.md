@@ -23,7 +23,7 @@ cd server
 npm install
 ```
 
-You must also set the environment variables for both the frontend and backend
+You must also set the environment variables for both the frontend and backend.
 1. Create a `.env` file in `/` and set the following variables
 
    ```bash
@@ -44,9 +44,10 @@ You must also set the environment variables for both the frontend and backend
 ## Running the App ##
 1. Start the React App by navigating to `/` and running `npm start`
 2. Start the Server by navigating to `/client` and running `npm start`
+3. The app can now be seen by naviagating to http://localhost:3000
 
 ## Running the app in production mode
-1. Add the following line to both `.env` files found in `/` and `/client`
+1. Add the following line to both the `.env` file found in `/`
 
    ```bash
    NODE_ENV=production
@@ -54,6 +55,6 @@ You must also set the environment variables for both the frontend and backend
 
 2. Navigate to `/client` and run `npm build`
 
-This will make the Express server serve the production build of our React app to the user  
-  
-To run the app, simply run navigate to `/` and run `npm start`
+This will make the Express server serve the production build of our React app to the user.  
+To run the app, simply run navigate to `/` and run `npm start`.  
+The production build will now be running on the server address (default: http://localhost:4000).  
