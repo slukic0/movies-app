@@ -52,7 +52,7 @@ You must also set the environment variables for both the frontend and backend.
 3. The app can now be seen by naviagating to http://localhost:3000
 
 ## Running the Production Build
-1. Add the following line to both the `.env` file found in `/`
+1. Add the following line to the `.env` file found in `/`
 
    ```bash
    NODE_ENV=production
