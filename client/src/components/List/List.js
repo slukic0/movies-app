@@ -30,7 +30,7 @@ class Browse extends Component{
 
         movieList.forEach(element => {
             promiseArray.push(
-                axios.get(`$/movies/getmovie/${element}`)
+                axios.get(`/movies/getmovie/${element}`)
                     .then(res =>{
                         movies.push(res.data)
                     })
