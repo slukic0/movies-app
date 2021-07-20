@@ -18,7 +18,7 @@ class Grid extends Component{
 
         if (isAuthenticated){
             const userID = user.sub
-            const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/users/get/${userID}`)
+            const res = await axios.get(`/users/get/${userID}`)
             return res.data.fav_movies
         }
         else{

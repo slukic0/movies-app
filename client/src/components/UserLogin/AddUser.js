@@ -20,7 +20,7 @@ class AddUser extends Component{
         if(!isLoading && !this.state.done){
             const userID = user.sub
 
-            axios.get(`${process.env.REACT_APP_SERVER_URL}/users/exists/${userID}`)
+            axios.get(`$/users/exists/${userID}`)
                 .then(res => {
                     if (!res.data){ // user is not in the DB, lets create a new user
                         const newUser = {
@@ -28,7 +28,7 @@ class AddUser extends Component{
                             fav_movies: [],
                             email: user.email
                         };
-                        axios.post(`${process.env.REACT_APP_SERVER_URL}/users/create`, newUser)
+                        axios.post(`/users/create`, newUser)
                             .then( () => {
                                 console.log('added user')
                             })
