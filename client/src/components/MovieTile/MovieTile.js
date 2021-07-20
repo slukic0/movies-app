@@ -50,7 +50,7 @@ class MovieTile extends Component{
 
     render() {
         const { isAuthenticated } = this.props.auth0
-        const movie_url = 'https:/www.themoviedb.org/movie/' + this.props.movie.id
+        const movie_url = 'https://www.themoviedb.org/movie/' + this.props.movie.id
         const title = this.props.movie.title
         let poster_url, myText, myVar, favButton
 
@@ -79,7 +79,9 @@ class MovieTile extends Component{
         return(
             <div className='tile'>
                 <Row>
-                    <Image src={poster_url} fluid className='tile-img' />
+                    <a href={movie_url} target='_blank' rel='noopener noreferrer'>
+                        <Image src={poster_url} fluid className='tile-img' />
+                    </a>
                 </Row>
                 <Row id='text'>
                     <Container style={{border: '0px'}}>
