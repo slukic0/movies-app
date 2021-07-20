@@ -1,6 +1,11 @@
 # Movies App #
 This is a Fullstack Application developed with MongoDB, Express, React, and Nodejs using the [MovieDB API](https://developers.themoviedb.org/3).
 
+## View Live Application ##
+[Live Demo is hosted on Heroku](https://movies-app-mern.herokuapp.com/)  
+Please allow some time for the server to wake up from sleep.
+  
+
 ## Prerequisites ##
 ### Install Node JS
 https://nodejs.org/en/
@@ -46,7 +51,7 @@ You must also set the environment variables for both the frontend and backend.
 2. Start the Server by navigating to `/client` and running `npm start`
 3. The app can now be seen by naviagating to http://localhost:3000
 
-## Running the app in production mode
+## Running the Production Build
 1. Add the following line to both the `.env` file found in `/`
 
    ```bash
