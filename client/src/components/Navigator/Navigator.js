@@ -1,30 +1,33 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, Container } from 'react-bootstrap';
+import { Nav, Navbar, Container, Image } from 'react-bootstrap';
 // eslint-disable-next-line
 import { BrowserRouter as Route, Link } from "react-router-dom";
 import UserLogin from '../UserLogin//UserLogin'
+import githubIcon from '../../images/GitHub-Mark-32px.png'
 
 class Navigator extends Component{
     render(){
         return(
-            <Navbar bg="light" expand="lg">
-            <Container fluid>
-                <Navbar.Brand as={Link} to="/">Movies-App</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
-                    <Nav.Link as={Link} to="/">Popular Movies</Nav.Link>
-                    <Nav.Link as={Link} to="/search">Search Movie</Nav.Link>
-                    <Nav.Link as={Link} to="/list">Favourites</Nav.Link>
-                    <Nav.Link href='https://github.com/Laemonz/movies-app' target='_blank' rel="noopener noreferrer">View Source</Nav.Link>
-                </Nav>
-                <Nav>
-                    <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-                    <UserLogin/>
-                </Nav>
-                </Navbar.Collapse>
-            </Container>
-            </Navbar>
+                <Navbar bg="light" expand="md" collapseOnSelect sticky='top'>
+                    <Container>
+                    <Navbar.Brand as={Link} to="/">Movies-App</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            <Nav.Link eventKey="1" as={Link} to="/">Popular Movies</Nav.Link>
+                            <Nav.Link eventKey="2" as={Link} to="/search">Search Movie</Nav.Link>
+                            <Nav.Link eventKey="3" as={Link} to="/list">Favourites</Nav.Link>
+                        </Nav>
+                        <Nav className="mr-auto">
+                            <Nav.Link eventKey="4" as={Link} to="/profile">Profile</Nav.Link>
+                            <UserLogin/>
+                        </Nav>
+                        <Nav.Link eventKey="5" href='https://github.com/Laemonz/movies-app' target='_blank' rel="noopener noreferrer">
+                            <Image src={githubIcon} />
+                        </Nav.Link>
+                    </Navbar.Collapse>
+                    </Container>
+                </Navbar>
         )
     }
 }
