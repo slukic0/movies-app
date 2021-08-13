@@ -21,7 +21,6 @@ class App extends Component {
     else{
       redirect = window.location.origin+'/loggedIn'
     }
-    console.log(redirect);
     return (
     <Auth0Provider
       domain={process.env.REACT_APP_AUTH0_DOMAIN}

@@ -14,6 +14,7 @@ class MovieTile extends Component{
         super(props)
         this.state={
             isFav: false,
+            loaded: false,
             server: process.env.REACT_APP_SERVER_URL || ''
         }
     }
@@ -78,10 +79,14 @@ class MovieTile extends Component{
             favButton = (<OverlayButton variant={myVar} className='tile-btn' size="sm" text={myText} tip="Please log in to favourite a movie!"/>)
         }
         return(
-            <div className='tile'>
+            <div className='tile' style={this.state.loaded ? {} : {display: 'none'}}>
                 <a href={movie_url} target='_blank' rel='noopener noreferrer'>
                     <Row id='img'>
-                        <Image src={poster_url} fluid className='tile-img' />
+                        <Image 
+                            src={poster_url} 
+                            fluid className='tile-img' 
+                            onLoad={() => this.setState({loaded: true})}
+                        />
                     </Row>
                     <Row id='text'>
                         <Container style={{border: '0px'}}>
