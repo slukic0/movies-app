@@ -5,8 +5,15 @@
     margin-left: 30px;
 
     background-color: #cfe1fc;
-    border: #8f8f8f groove 1px;
-    box-shadow: 0 0 10px rgb(0, 0, 0);
+    border: 1px solid #eee;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
+
+    transition: all .2s ease-in-out;
+}
+
+.tile:hover {
+    box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+    margin-top: -1px;
 }
 
 .tile-img {
@@ -22,4 +29,13 @@
 .title {
     text-align: center;
     white-space: pre-line;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: inherit;
 }

@@ -79,21 +79,16 @@ class MovieTile extends Component{
         }
         return(
             <div className='tile'>
-                <Row>
-                    <a href={movie_url} target='_blank' rel='noopener noreferrer'>
+                <a href={movie_url} target='_blank' rel='noopener noreferrer'>
+                    <Row id='img'>
                         <Image src={poster_url} fluid className='tile-img' />
-                    </a>
-                </Row>
-                <Row id='text'>
-                    <Container style={{border: '0px'}}>
-                        <h5 className="title">{title}</h5>
-                    </Container>
-                </Row>
-                <Row id='viewButton'>
-                    <div className="d-grid gap-2">
-                        <Button variant="primary" className='tile-btn' size="sm" href={movie_url} target='_blank' rel='noopener noreferrer'>View</Button>
-                    </div>
-                </Row>
+                    </Row>
+                    <Row id='text'>
+                        <Container style={{border: '0px'}}>
+                            <h5 className="title">{title}</h5>
+                        </Container>
+                    </Row>  
+                </a>
                 <Row id='favButton'>
                     <div className="d-grid gap-2">
                         {favButton}
