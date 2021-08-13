@@ -55,7 +55,7 @@ You must also set the environment variables for both the frontend and backend.
    NODE_ENV=production
    ```
 
-2. Navigate to `/client` and run `npm build`
+2. Navigate to `/client` and run `npm run build`
 
 This will make the Express server serve the production build of our React app to the user.  
 To run the app, simply run navigate to `/` and run `npm start`.  
