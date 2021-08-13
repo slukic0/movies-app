@@ -19,12 +19,9 @@ Download the project and open the root directory.
 Run the following commands to install the required packages
 
 ```bash
-cd client
 npm install
 
-cd ..
-
-cd server
+cd client
 npm install
 ```
 
