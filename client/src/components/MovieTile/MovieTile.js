@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import OverlayButton from '../OverlayButton/OverlayButton'
 import noPoster from '../../images/noPoster.png'
 import './MovieTile.css'
-import { Row, Image, Button, Container } from 'react-bootstrap';
+import { Row, Image, Container } from 'react-bootstrap';
 import {withAuth0 } from "@auth0/auth0-react";
+import { withRouter } from 'react-router-dom';
+import FavButton from '../FavButton/FavButton';
 
 const POSTER_SIZE = 'w500/'
 
@@ -13,74 +13,25 @@ class MovieTile extends Component{
     constructor(props){
         super(props)
         this.state={
-            isFav: false,
             loaded: false,
             server: process.env.REACT_APP_SERVER_URL || ''
         }
     }
 
-    onClickHandler = () => {
-        if (!this.state.isFav){
-            return this.addToFav()
-        }
-        else{
-            return this.removeFromFav()
-        }
-    }
-
-    addToFav = (event) => { 
-        const { user } = this.props.auth0
-        const userID = user.sub
-        const movieID = this.props.movie.id
-
-        axios.post(this.state.server+`/users/addMovie/${userID}`, {"movieID": movieID})
-            .then(this.setState({isFav: true}))
-    }
-
-    removeFromFav = (event) => { 
-        const { user } = this.props.auth0
-        const userID = user.sub
-        const movieID = this.props.movie.id
-
-        axios.post(this.state.server+`/users/removeMovie/${userID}`, {"movieID": movieID})
-            .then(this.setState({isFav: false}));
-    }
-
-    componentDidMount = () => {
-        this.setState({isFav: this.props.isFav})
+    redirectHandler = () => {
+        let path = '/movie/'+this.props.movie.id
+        let history = this.props.history
+        history.push(path)
     }
 
     render() {
-        const { isAuthenticated } = this.props.auth0
-        const movie_url = 'https://www.themoviedb.org/movie/' + this.props.movie.id
         const title = this.props.movie.title
-        let poster_url, myText, myVar, favButton
+        let poster_url
+        (this.props.movie.poster_path == null) ? poster_url= noPoster : poster_url = 'https://image.tmdb.org/t/p/'+POSTER_SIZE + this.props.movie.poster_path
 
-        if (this.props.movie.poster_path == null){
-            poster_url= noPoster
-        }
-        else{
-            poster_url = 'https://image.tmdb.org/t/p/'+POSTER_SIZE + this.props.movie.poster_path
-        }
-
-        if (!this.state.isFav){
-            myText = 'Favourite'
-            myVar = 'secondary'
-        }
-        else{
-            myText= 'Unfavourite'
-            myVar = 'success'
-        }
-
-        if (isAuthenticated){
-            favButton = (<Button variant={myVar} className='tile-btn' size="sm" onClick={this.onClickHandler} >{myText}</Button>)
-        }
-        else{
-            favButton = (<OverlayButton variant={myVar} className='tile-btn' size="sm" text={myText} tip="Please log in to favourite a movie!"/>)
-        }
         return(
             <div className='tile' style={this.state.loaded ? {} : {display: 'none'}}>
-                <a href={movie_url} target='_blank' rel='noopener noreferrer'>
+                <div onClick={()=>{this.redirectHandler()}} >
                     <Row id='img'>
                         <Image 
                             src={poster_url} 
@@ -93,10 +44,10 @@ class MovieTile extends Component{
                             <h5 className="title">{title}</h5>
                         </Container>
                     </Row>  
-                </a>
+                </div>
                 <Row id='favButton'>
                     <div className="d-grid gap-2">
-                        {favButton}
+                        {<FavButton isFav={this.props.isFav} id={this.props.movie.id}/>}
                     </div>
                 </Row>
             </div>
@@ -104,4 +55,4 @@ class MovieTile extends Component{
     }
 }
 
-export default withAuth0(MovieTile)
+export default withRouter(withAuth0(MovieTile))

@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navigator from './components/Navigator/Navigator'
 import Browse from './components/Browse/Browse'
 import Search from './components/Search/Search'
+import MoviePage from "./components/MoviePage/MoviePage";
 import List from './components/List/List'
 import Profile from './components/Profile/Profile';
 import AddUser from "./components/UserLogin/AddUser";
@@ -32,6 +33,7 @@ class App extends Component {
         <Switch>
             <Route path="/" exact component={Browse} />
             <Route path="/search" component={Search} />
+            <Route path="/movie/:id" component={MoviePage} />
             <Route path="/list" component={List} />
             <Route path="/profile" component={Profile} />
             <Route path="/loggedIn" exact component={AddUser} />

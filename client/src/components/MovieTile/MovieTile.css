@@ -9,6 +9,7 @@
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
 
     transition: all .2s ease-in-out;
+    cursor: pointer
 }
 
 .tile:hover {
