@@ -60,7 +60,7 @@ class MoviePage extends Component{
 
             return(
                 <Container fluid='lg' className='text-center movie'>
-                    <Row xl={2} lg={1}>
+                    <Row xl={2} lg={1} md={1} sm={1} xs={1}>
                             <Col id='img'>
                                 <Image 
                                     thumbnail
@@ -82,7 +82,7 @@ class MoviePage extends Component{
                                         <h5> <img src={clock} alt='clock' style={{height: '2.0em'}}/> {parseInt(this.state.data.runtime/60)}:{this.state.data.runtime%60}</h5>
                                     </Col>
                                     <Col sm={3} className='inline-pic'>
-                                        <h5> <img src={star} alt='star' style={{height: '2.0em'}}/> {this.state.data.vote_average}</h5>
+                                        <h5> <img src={star} alt='star' style={{height: '2.0em'}}/> {this.state.data.vote_average}/10</h5>
                                     </Col>
                                     <Col sm={6}>
                                         <div className="d-grid gap-2">
