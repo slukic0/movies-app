@@ -6,3 +6,7 @@
     text-align: center;
     white-space: pre-line;
 }
+
+.inline-pic > img {
+    display: inline-block;
+}

@@ -5,6 +5,7 @@ import { Row, Image, Container } from 'react-bootstrap';
 import {withAuth0 } from "@auth0/auth0-react";
 import { withRouter } from 'react-router-dom';
 import FavButton from '../FavButton/FavButton';
+import { Redirect } from 'react-router';
 
 const POSTER_SIZE = 'w500/'
 
@@ -13,15 +14,10 @@ class MovieTile extends Component{
     constructor(props){
         super(props)
         this.state={
+            redirect: false,
             loaded: false,
             server: process.env.REACT_APP_SERVER_URL || ''
         }
-    }
-
-    redirectHandler = () => {
-        let path = '/movie/'+this.props.movie.id
-        let history = this.props.history
-        history.push(path)
     }
 
     render() {
@@ -29,9 +25,20 @@ class MovieTile extends Component{
         let poster_url
         (this.props.movie.poster_path == null) ? poster_url= noPoster : poster_url = 'https://image.tmdb.org/t/p/'+POSTER_SIZE + this.props.movie.poster_path
 
+        if (this.state.redirect){
+            return(
+                <Redirect 
+                    to={{
+                        pathname: '/movie/'+this.props.movie.id,
+                        state: { isFav: this.props.isFav }
+                    }}
+                />
+            )
+        }
+
         return(
             <div className='tile' style={this.state.loaded ? {} : {display: 'none'}}>
-                <div onClick={()=>{this.redirectHandler()}} >
+                <div onClick={ ()=>{this.setState({redirect: true})} } >
                     <Row id='img'>
                         <Image 
                             src={poster_url} 

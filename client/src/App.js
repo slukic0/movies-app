@@ -33,7 +33,7 @@ class App extends Component {
         <Switch>
             <Route path="/" exact component={Browse} />
             <Route path="/search" component={Search} />
-            <Route path="/movie/:id" component={MoviePage} />
+            <Route path="/movie/:id" render={(props) => <MoviePage {...props}/>} />
             <Route path="/list" component={List} />
             <Route path="/profile" component={Profile} />
             <Route path="/loggedIn" exact component={AddUser} />
