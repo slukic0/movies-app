@@ -5,6 +5,7 @@ import Spinner from "../Spinner/Spinner";
 import noPoster from '../../images/noPoster.png'
 import FavButton from "../FavButton/FavButton";
 import { Row, Col, Image, Container } from 'react-bootstrap';
+import './MoviePage.css'
 
 const POSTER_SIZE = 'w500/'
 
@@ -49,28 +50,36 @@ class MoviePage extends Component{
             (this.state.data.poster_path == null) ? poster_url= noPoster : poster_url = 'https://image.tmdb.org/t/p/'+POSTER_SIZE + this.state.data.poster_path
 
             return(
-                <Row>
-                    <Col sm={4}>
-                        <Row id='img'>
-                            <Image 
-                                src={poster_url} 
-                                fluid className='tile-img' 
-                                onLoad={() => this.setState({imgLoaded: true})}
-                                style={this.state.imgLoaded ? {} : {display: 'none'}}
-                            />
-                        </Row>
-                        <Row id='favButton'>
-                            <div className="d-grid gap-2">
-                            {<FavButton isFav={this.props.isFav} id={this.state.ID}/>}
-                            </div>
-                        </Row>
-                    </Col>
-                    <Col sm={8}>
-                        <h1 className="title">{this.state.data.title}</h1>
-                        <h3 className="title">{this.state.data.overview}</h3>
-                    </Col>
-                </Row>
-                
+                <Container fluid='lg' className='movie' className='text-center'>
+                    <Row xl={2} lg={1}>
+                            <Col id='img'>
+                                <Image 
+                                    thumbnail
+                                    src={poster_url} 
+                                    fluid className='tile-img' 
+                                    onLoad={() => this.setState({imgLoaded: true})}
+                                    style={this.state.imgLoaded ? {} : {display: 'none'}}
+                                />
+                            </Col>
+                            <Col id='info'>
+                                <h1 className="title">{this.state.data.title}</h1>
+                                <h4 className="title">{this.state.data.overview}</h4>
+                                <Row>
+                                    <Col sm={3}>
+                                        <h5>{parseInt(this.state.data.runtime/60)}:{this.state.data.runtime%60}</h5>
+                                    </Col>
+                                    <Col sm={3}>
+                                        <h5>{this.state.data.vote_average}</h5>
+                                    </Col>
+                                    <Col sm={6}>
+                                        <div className="d-grid gap-2">
+                                            {<FavButton isFav={this.props.isFav} id={this.state.ID}/>}
+                                        </div>
+                                    </Col>
+                                </Row>
+                            </Col>
+                     </Row>
+                </Container>
             )
         }
         else{
