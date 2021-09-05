@@ -27,6 +27,8 @@ class App extends Component {
       domain={process.env.REACT_APP_AUTH0_DOMAIN}
       clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
       redirectUri={redirect}
+      useRefreshTokens={true}
+      cacheLocation={"localstorage"}
     >
       <Router>
       <Navigator/>
