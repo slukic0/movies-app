@@ -20,7 +20,7 @@ class Grid extends Component{
 
         if (isAuthenticated){
             const userID = user.sub
-            const res = await axios.get(this.state.server+`/users/get/${userID}`)
+            const res = await axios.get(this.state.server+`/api/users/get/${userID}`)
             return res.data.fav_movies
         }
         else{

@@ -20,7 +20,7 @@ class Browse extends Component{
         const { user } = this.props.auth0
         const userID = user.sub
 
-        axios.get(this.state.server+`/users/get/${userID}`)
+        axios.get(this.state.server+`/api/users/get/${userID}`)
             .then( (res) =>{
                 this.getMovieDetails(res.data.fav_movies)
             })
@@ -32,7 +32,7 @@ class Browse extends Component{
 
         movieList.forEach(element => {
             promiseArray.push(
-                axios.get(this.state.server+`/movies/getmovie/${element}`)
+                axios.get(this.state.server+`/api/movies/getmovie/${element}`)
                     .then(res =>{
                         movies.push(res.data)
                     })

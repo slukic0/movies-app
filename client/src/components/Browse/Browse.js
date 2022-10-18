@@ -17,7 +17,7 @@ class Browse extends Component{
     }
 
     getPopular = () =>{
-        const URL = this.state.server+`/movies/getpopular/${this.state.pageNum}`
+        const URL = this.state.server+`/api/movies/getpopular/${this.state.pageNum}`
         
         axios.get(URL)
         .then((response) => {

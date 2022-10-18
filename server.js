@@ -16,8 +16,8 @@ const PORT = process.env.PORT || 4000;
 const movies = require('./routes/movies')
 const users = require('./routes/users')
 
-app.use('/movies', movies)
-app.use('/users', users)
+app.use('/api/movies', movies)
+app.use('/api/users', users)
 
 // set NODE_ENV to production to run the production build of the app
 // this will use express to send our react app to the client

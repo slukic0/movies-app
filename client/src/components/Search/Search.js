@@ -23,7 +23,7 @@ class Search extends Component{
 
         this.setState({noResults: false})
         this.setState({loading: true})
-        const URL = this.state.server+`/movies/search/${searchTerm}/${pageNum}`
+        const URL = this.state.server+`/api/movies/search/${searchTerm}/${pageNum}`
         
         axios.get(URL)
         .then((response) => {
@@ -48,7 +48,7 @@ class Search extends Component{
         this.setState({noResults: false})
         this.setState({loading: true})
 
-        const URL = this.state.server+`/movies/search/${searchTerm}/${pageNum}`
+        const URL = this.state.server+`/api/movies/search/${searchTerm}/${pageNum}`
         
         axios.get(URL)
         .then((response) => {

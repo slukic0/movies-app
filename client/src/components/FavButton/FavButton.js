@@ -35,7 +35,7 @@ class FavButton extends Component{
         const userID = user.sub
         const movieID = this.props.id
 
-        axios.post(this.state.server+`/users/addMovie/${userID}`, {"movieID": movieID})
+        axios.post(this.state.server+`/api/users/addMovie/${userID}`, {"movieID": movieID})
             .then(this.setState({isFav: true}));
     }
 
@@ -44,7 +44,7 @@ class FavButton extends Component{
         const userID = user.sub
         const movieID = this.props.id
 
-        axios.post(this.state.server+`/users/removeMovie/${userID}`, {"movieID": movieID})
+        axios.post(this.state.server+`/api/users/removeMovie/${userID}`, {"movieID": movieID})
             .then(this.setState({isFav: false}));
     }
 

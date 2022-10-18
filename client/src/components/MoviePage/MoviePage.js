@@ -23,7 +23,7 @@ class MoviePage extends Component{
     }
 
     getData = () =>{
-        const URL = this.state.server+`/movies/getmovie/${this.state.ID}`
+        const URL = this.state.server+`/api/movies/getmovie/${this.state.ID}`
 
         axios.get(URL)
         .then((response) => {
