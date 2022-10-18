@@ -2,8 +2,8 @@
 This is a Fullstack Application developed with MongoDB, Express, React, and Nodejs using the [MovieDB API](https://developers.themoviedb.org/3).
 
 ## View Live Application ##
-[Live Demo is hosted on Heroku](https://movies-app-mern.herokuapp.com/)  
-Please allow some time for the server to wake up from sleep.
+[Click this link to view a live demo of the application](https://movies-app.onrender.com/)  
+Please allow some time for the server to wake up from sleep if the page does not immediately load.
   
 
 ## Prerequisites ##
@@ -14,7 +14,7 @@ https://nodejs.org/en/
 1. Go to the [MovieDB website](https://developers.themoviedb.org/3) and register for a free API key.
 2. Go to the [auth0 website](https://auth0.com/docs/quickstart/spa/react#configure-auth0) and register for a free account.
 
-## Setup / Installation ## ##
+## Setup / Installation ##
 Download the project and open the root directory.
 Run `npm ci` in both `/client` and `/server` to install required dependencies 
 
