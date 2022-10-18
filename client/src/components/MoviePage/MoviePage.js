@@ -82,7 +82,7 @@ class MoviePage extends Component{
                                         <h5> <img src={clock} alt='clock' style={{height: '2.0em'}}/> {parseInt(this.state.data.runtime/60)}:{this.state.data.runtime%60}</h5>
                                     </Col>
                                     <Col sm={3} className='inline-pic'>
-                                        <h5> <img src={star} alt='star' style={{height: '2.0em'}}/> {this.state.data.vote_average}/10</h5>
+                                        <h5> <img src={star} alt='star' style={{height: '2.0em'}}/> {this.state.data.vote_average.toFixed(1)}/10</h5>
                                     </Col>
                                     <Col sm={6}>
                                         <div className="d-grid gap-2">

@@ -14,19 +14,12 @@ https://nodejs.org/en/
 1. Go to the [MovieDB website](https://developers.themoviedb.org/3) and register for a free API key.
 2. Go to the [auth0 website](https://auth0.com/docs/quickstart/spa/react#configure-auth0) and register for a free account.
 
-## Setup / Instalation ##
+## Setup / Installation ## ##
 Download the project and open the root directory.
-Run the following commands to install the required packages
-
-```bash
-npm install
-
-cd client
-npm install
-```
+Run `npm ci` in both `/client` and `/server` to install required dependencies 
 
 You must also set the environment variables for both the frontend and backend.
-1. Create a `.env` file in `/` and set the following variables
+1. Create a `.env` file in `/server` and set the following variables
 
    ```bash
    API_KEY = your MovieDB API key
@@ -44,19 +37,6 @@ You must also set the environment variables for both the frontend and backend.
    ```
 
 ## Running the App ##
-1. Start the React App by navigating to `/` and running `npm start`
+1. Start the React App by navigating to `/server` and running `npm start`
 2. Start the Server by navigating to `/client` and running `npm start`
-3. The app can now be seen by naviagating to http://localhost:3000
-
-## Running the Production Build
-1. Add the following line to the `.env` file found in `/`
-
-   ```bash
-   NODE_ENV=production
-   ```
-
-2. Navigate to `/client` and run `npm run build`
-
-This will make the Express server serve the production build of our React app to the user.  
-To run the app, simply run navigate to `/` and run `npm start`.  
-The production build will now be running on the server address (default: http://localhost:4000).  
+3. The app can now be seen by navigating to http://localhost:3000

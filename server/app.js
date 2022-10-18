@@ -19,24 +19,9 @@ const users = require('./routes/users')
 app.use('/api/movies', movies)
 app.use('/api/users', users)
 
-// set NODE_ENV to production to run the production build of the app
-// this will use express to send our react app to the client
-if (process.env.NODE_ENV === 'production'){
-    console.log('Server is running in production mode');
-
-    app.use(express.static(path.join(__dirname, '/client/build')))
-    app.get('/*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'), (err)=>{
-            if (err) {
-              res.status(500).send(err)
-            }
-        })
-    })
-} else {
-    app.get('/', (req,res) => {
-        res.send('API running');
-    })
-}
+app.get('/', (req,res) => {
+    res.status(200).send('API running');
+})
 
 mongoose.connect(`${MONGODB_URI}/movies`, { useNewUrlParser: true, useUnifiedTopology:true });
 const connection = mongoose.connection;
