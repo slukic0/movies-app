@@ -22,6 +22,7 @@ class App extends Component {
     else{
       redirect = window.location.origin+'/loggedIn'
     }
+    document.title="Movies App";
     return (
     <Auth0Provider
       domain={process.env.REACT_APP_AUTH0_DOMAIN}
@@ -38,7 +39,7 @@ class App extends Component {
             <Route path="/movie/:id" render={(props) => <MoviePage {...props}/>} />
             <Route path="/list" component={List} />
             <Route path="/profile" component={Profile} />
-            <Route path="/loggedIn" exact component={AddUser} />
+            <Route path="/loggedIn" component={AddUser} />
             <Route path='*' component={PageNotFound} />
         </Switch>
       </Router>
